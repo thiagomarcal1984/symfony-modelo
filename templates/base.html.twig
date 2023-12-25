@@ -2,8 +2,10 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        <link rel="stylesheet" href="{{ app.request.getSchemeAndHttpHost() }}/node_modules/bootstrap/dist/css/bootstrap.min.css">
         {% block stylesheets %}
         {% endblock %}
 
@@ -11,6 +13,42 @@
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="{{ path('app_index') }}">Index</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        {% set mapaRotaLabel = {
+                            'app_aluno_index' : 'Alunos',
+                            'app_telefone_index' : 'Telefones',
+                            'app_curso_index' : 'Cursos',
+                        } %}
+                        {% for rota, label in mapaRotaLabel %}
+                            <li class="nav-item">
+                                <a class="nav-link {{ app.request.requestUri == path(rota) ? 'active' : '' }}" aria-current="page" href="{{ path(rota) }}">{{ label }}</a>
+                            </li>
+                        {% endfor %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                              Dropdown
+                            </a>
+                            <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="#">Action</a></li>
+                              <li><a class="dropdown-item" href="#">Another action</a></li>
+                              <li><hr class="dropdown-divider"></li>
+                              <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                          </li>                  
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container mt-3">
+            {% block body %}{% endblock %}
+        </div>
+        <script src="{{ app.request.getSchemeAndHttpHost() }}/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     </body>
 </html>

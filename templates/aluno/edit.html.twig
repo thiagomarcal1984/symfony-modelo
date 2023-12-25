@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Aluno{% endblock %}
+
+{% block body %}
+    <h1>Edit Aluno</h1>
+
+    {{ include('aluno/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_aluno_index') }}">back to list</a>
+
+    {{ include('aluno/_delete_form.html.twig') }}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/css/multi-select-tag.css">
+    <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/js/multi-select-tag.js"></script>
+    <script>
+        new MultiSelectTag('aluno_cursos', { 
+            placeholder : 'Procurar',
+            tagColor: {
+                textColor: '#327b2c',
+                borderColor: '#92e681',
+                bgColor: '#eaffe6',
+            }
+
+        }) 
+    </script>
+{% endblock %}

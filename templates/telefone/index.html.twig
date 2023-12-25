@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Telefone index{% endblock %}
+
+{% block body %}
+    <h1>Telefone index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Numero</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for telefone in telefones %}
+            <tr>
+                <td>{{ telefone.id }}</td>
+                <td>{{ telefone.numero }}</td>
+                <td>
+                    <a href="{{ path('app_telefone_show', {'id': telefone.id}) }}">show</a>
+                    <a href="{{ path('app_telefone_edit', {'id': telefone.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_telefone_new') }}">Create new</a>
+{% endblock %}

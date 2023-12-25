@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Telefone{% endblock %}
+
+{% block body %}
+    <h1>Edit Telefone</h1>
+
+    {{ include('telefone/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_telefone_index') }}">back to list</a>
+
+    {{ include('telefone/_delete_form.html.twig') }}
+    <link rel="stylesheet" href="https://unpkg.com/@jarstone/dselect/dist/css/dselect.css">
+    <script src="https://unpkg.com/@jarstone/dselect/dist/js/dselect.js"></script>
+    <script>
+        const config = {
+            search: true, // Toggle search feature. Default: false
+            creatable: false, // Creatable selection. Default: false
+            clearable: true, // Clearable selection. Default: false
+            maxHeight: '360px', // Max height for showing scrollbar. Default: 360px
+            size: '', // Can be "sm" or "lg". Default ''
+        }
+        dselect(document.querySelector('#telefone_aluno'), config)
+    </script>
+{% endblock %}

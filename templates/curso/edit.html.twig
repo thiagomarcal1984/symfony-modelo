@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Curso{% endblock %}
+
+{% block body %}
+    <h1>Edit Curso</h1>
+
+    {{ include('curso/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_curso_index') }}">back to list</a>
+
+    {{ include('curso/_delete_form.html.twig') }}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/css/multi-select-tag.css">
+    <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/js/multi-select-tag.js"></script>
+    <script>
+        new MultiSelectTag('curso_alunos', { 
+            placeholder : 'Procurar',
+            tagColor: {
+                textColor: '#327b2c',
+                borderColor: '#92e681',
+                bgColor: '#eaffe6',
+            }
+
+        }) 
+    </script>
+{% endblock %}
