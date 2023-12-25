@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Faça Login{% endblock %}
+
+{% block body %}
+    <h1>Login</h1>
+    {{ form_errors(form)}}
+    {{ form_start(form)}}
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+        {{ form_row(form._username) }}
+        {{ form_errors(form._username) }}
+        {{ form_row(form._password) }}
+        {{ form_errors(form._password) }}
+        <button class="btn btn-success" type="submit">Login</button>
+    {{ form_end(form)}}
+    {#
+        <form method="POST">
+            <label for="_username">Usuário</label>
+            <input type="text" class="form-control" name="_username">
+            <label for="_password">Senha</label>
+            <input type="password" class="form-control" name="_password">
+            <button class="btn btn-success" type="submit">Login</button>
+        </form>
+        {{ senha }}
+    #}
+{% endblock %}
